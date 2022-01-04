@@ -40,26 +40,26 @@ describe("ContactEditComponent tests", () => {
     }
   };
 
-  beforeEach(() => {
+  beforeEach(() => { // sets up our TestBed configuration
     TestBed.configureTestingModule({
       declarations: [ContactEditComponent, FavoriteIconDirective, InvalidEmailModalComponent, InvalidPhoneNumberModalComponent],
       imports: [
         AppMaterialModule,
         FormsModule,
-        NoopAnimationsModule,
+        NoopAnimationsModule, //to mock animations, which allows tests to run quickly without waiting for the animations to finish.
         RouterTestingModule
       ],
       providers: [{provide: ContactService, useValue: contactServiceStub}]
     });
 
-    TestBed.overrideModule(BrowserDynamicTestingModule, {
+    TestBed.overrideModule(BrowserDynamicTestingModule, { // overrideModule for lazy loading
       set: {
         entryComponents: [InvalidEmailModalComponent, InvalidPhoneNumberModalComponent]
       }
     });
   });
 
-  beforeEach(() => {
+  beforeEach(() => { // set our instance variables
     fixture = TestBed.createComponent(ContactEditComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
